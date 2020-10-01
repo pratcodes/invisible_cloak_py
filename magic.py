@@ -3,7 +3,6 @@ import cv2
 import numpy as np 
 import time 
 
-# This will run even for brighter backgrounds..
 # replace the red pixels ( or undesired area ) with 
 # background pixels to generate the invisibility feature. 
   
@@ -65,7 +64,7 @@ while (capture_video.isOpened()):
     mask1 = cv2.inRange(hsv, lower_red, upper_red) 
     # setting the lower and upper range for mask2  
     lower_red = np.array([155, 40, 40]) 
-    upper_red = np.array([120, 255, 255]) 
+    upper_red = np.array([100, 255, 255]) 
     mask2 = cv2.inRange(hsv, lower_red, upper_red) 
     #----------------------------------------------------------------------# 
   
@@ -85,6 +84,6 @@ while (capture_video.isOpened()):
     final_output = cv2.addWeighted(res1, 1, res2, 1, 0) 
   
     cv2.imshow("INVISIBLE MAN", final_output) 
-    k = cv2.waitKey(10) 
-    if k == 27: 
+    k = cv2.waitKey(12) 
+    if k == 28: 
         break
